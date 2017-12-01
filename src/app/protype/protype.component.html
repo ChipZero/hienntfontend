@@ -1,0 +1,44 @@
+<div>
+  <div class="row">
+    <div class="col-md-6">
+      <button (click)="onCheck()" type="button" class="btn btn-success"  >Add new </button>
+    </div>
+  </div>
+  <div *ngIf="checkAdd">
+    <div *ngIf="messages" class="alert alert-danger">
+      <h5>{{messages}}</h5>
+    </div>
+    <form class="form-horizontal" [formGroup]="protypeAddForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>name</label>
+        <input class="form-control" formControlName="prtName" type="text" name="prtName">
+        <div class="alert alert-danger" *ngIf="protypeAddForm.get('prtName')?.errors?.required && protypeAddForm.get('prtName')?.touched">bạn chưa nhập Name Sản phẩm!</div>
+        <div class="alert alert-danger" *ngIf="protypeAddForm.get('prtName')?.errors?.minlength || protypeAddForm.get('prtName')?.errors?.maxlength">Phai co 2-100 ky tu!</div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="protypeAddForm.invalid">Submit</button>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>stt</th>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let prt of protypes | paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; trackBy: contactTrackByFn;index as stt"
+        [class.selected]="prt.prtId === selectedId" [routerLink]="['/prt', prt.prtId]">
+      <td>{{stt+1}}</td>
+      <td>{{ prt.prtId }}</td>
+      <td>{{ prt.prtName }}</td>
+      <td><button type="button" class="btn btn-danger" (click)="delete(prt.prtId); $event.stopPropagation()">Delete</button></td>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="page = $event" id="1"
+                       maxSize="5"
+                       directionLinks="true"
+                       autoHide="true">
+  </pagination-controls>`
+</div>
+

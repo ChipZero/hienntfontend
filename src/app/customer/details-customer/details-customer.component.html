@@ -1,0 +1,61 @@
+<div *ngIf="customernew">
+  <h1>Edit customer </h1>
+  <div *ngIf="messages" class="alert alert-danger">
+    <h5>{{messages}}</h5>
+  </div>
+  <form class="form-horizontal" [formGroup]="customerData" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>id</label>
+      <input class="form-control" type="text" formControlName="cusId" name="cusId" [attr.disabled]="true">
+    </div>
+
+    <div class="form-group">
+      <label>name</label>
+      <input class="form-control" type="text" formControlName="cusName" name="cusName">
+      <div class="alert alert-danger" *ngIf="customerData.get('cusName')?.errors?.required && customerData.get('cusName')?.touched">Ban chua nhap Name!</div>
+      <div class="alert alert-danger" *ngIf="customerData.get('cusName')?.errors?.minlength || customerData.get('cusName')?.errors?.maxlength">Phai co 2-10 ky tu!</div>
+    </div>
+
+    <div class="form-group">
+      <label>address</label>
+      <input class="form-control" type="text" formControlName="cusAddress"  name="cusAddress">
+      <div class="alert alert-danger" *ngIf="customerData.get('cusAddress')?.errors?.required && customerData.get('cusAddress')?.touched">Ban chua nhap Name!</div>
+      <div class="alert alert-danger" *ngIf="customerData.get('cusAddress')?.errors?.minlength || customerData.get('cusAddress')?.errors?.maxlength">Bạn Phải nhập 2-100 ky tu!</div>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <input class="form-control" type="text" formControlName="cusCity"  name="cusCity">
+      <div class="alert alert-danger" *ngIf="customerData.get('cusCity')?.errors?.required && customerData.get('cusCity')?.touched">Ban chua nhap Name!</div>
+      <div class="alert alert-danger" *ngIf="customerData.get('cusCity')?.errors?.minlength || customerData.get('cusCity')?.errors?.maxlength">Bạn Phải nhập 2-100 ky tu!</div>
+    </div>
+
+    <div class="form-group">
+      <label>phone</label>
+      <input class="form-control" type="text" formControlName="cusPhone" name="cusPhone">
+      <div class="alert alert-danger" *ngIf="customerData.get('cusPhone')?.errors?.required && customerData.get('cusPhone')?.touched">Ban chua nhap PhoneNumber!</div>
+      <div class="alert alert-danger" *ngIf="customerData.get('cusPhone')?.errors?.pattern">bạn cần nhập số 10-11 số bắt đầu 0 hoặc +84</div>
+    </div>
+
+    <div class="form-group">
+      <label>state</label>
+      <input class="form-control" type="text" formControlName="cusState" name="cusState">
+      <div class="alert alert-danger" *ngIf="customerData.get('cusState')?.errors?.required && customerData.get('cusState')?.touched">Ban chua nhap State!</div>
+      <div class="alert alert-danger" *ngIf="customerData.get('cusState')?.errors?.pattern">bạn cần nhập chữ 2 ký tự quốc gia của bạn</div>
+    </div>
+
+    <div class="form-group">
+      <label>zip</label>
+      <input class="form-control" type="text" formControlName="cusZip" name="cusZip">
+      <div class="alert alert-danger" *ngIf="customerData.get('cusZip')?.errors?.required && customerData.get('cusZip')?.touched">Ban chua nhap Zip!</div>
+      <div class="alert alert-danger" *ngIf="customerData.get('cusZip')?.errors?.pattern">bạn cần nhập số 9-12 ký tự</div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="customerData.invalid">Update</button>
+    <button type="button" class="btn btn-danger" (click)="back()" >Back</button>
+
+  </form>
+</div>
+
+
