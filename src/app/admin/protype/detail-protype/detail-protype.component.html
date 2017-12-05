@@ -1,0 +1,23 @@
+<div *ngIf="protypeDetails">
+  <h1>Details and edit product</h1>
+  <div *ngIf="messages" class="alert alert-danger">
+    <h5>{{messages}}</h5>
+  </div>
+  <form class="form-horizontal" [formGroup]="protypeData" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Product-ID</label>
+      <input class="form-control" type="text" formControlName="prtId" name="prtId" [attr.disabled]="true">
+    </div>
+
+    <div class="form-group">
+      <label>Product-Name</label>
+      <input class="form-control" type="text" formControlName="prtName"  name="prtName">
+      <div class="alert alert-danger" *ngIf="protypeData.get('prtName')?.errors?.required && protypeData.get('prtName')?.touched">bạn chưa nhập Name!</div>
+      <div class="alert alert-danger" *ngIf="protypeData.get('prtName')?.errors?.minlength || protypeData.get('prtName')?.errors?.maxlength">Phai co 2-100 ky tu!</div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success" [disabled]="protypeData.invalid">Update</button>
+    <button type="button" class="btn btn-danger" (click)="back()" >Back</button>
+  </form>
+</div>

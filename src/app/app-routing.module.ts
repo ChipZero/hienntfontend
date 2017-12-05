@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomerComponent } from './customer/customer.component';
-import { InvoicesComponent } from './invoices/invoices.component';
-import { ProductComponent } from './product/product.component';
-import {ProtypeComponent} from './protype/protype.component';
+import {AdminComponent} from './admin/admin.component';
+import {UserComponent} from './user/user.component';
 
 const routes: Routes = [
-  { path: 'customer', component: CustomerComponent},
-  { path: 'invoice', component: InvoicesComponent},
-  { path: 'product', component: ProductComponent},
-  { path: 'protype', component: ProtypeComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'user', component: UserComponent},
+  {path: '', redirectTo: 'user/index', pathMatch: 'full'},
+  {path: '**', redirectTo: 'user/index', pathMatch: 'full'}
 ];
 
 @NgModule({
