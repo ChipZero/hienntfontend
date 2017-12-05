@@ -1,0 +1,84 @@
+<!-- Page Content-->
+<main class="page-content">
+  <!-- Breadcrumbs & Page title-->
+  <section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-image-breadcrumbs">
+    <div class="shell shell-fluid">
+      <div class="range range-condensed">
+        <div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+          <p class="h3 text-white">Menu</p>
+          <ul class="breadcrumbs-custom offset-top-10">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Menu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-50 section-sm-100">
+    <div class="shell isotope-wrap">
+      <div class="range range-sm-center">
+        <div class="cell-xs-12">
+          <div class="cell-box">
+            <ul class="isotope-filters-responsive">
+              <li>
+                <p>Choose your category:</p>
+              </li>
+              <li class="block-top-level">
+                <!-- Isotope Filters-->
+                <!--<button data-custom-toggle="#isotope-1" data-custom-toggle-disable-on-blur="true" class="isotope-filters-toggle btn btn-primary-lighter btn-shape-circle">Filter<span class="caret"></span></button>-->
+                <div id="isotope-1" class="isotope-filters isotope-filters-buttons">
+                  <ul class="inline-list">
+                    <li *ngFor="let prt of protypes">
+                      <a data-isotope-filter="Category 1" data-isotope-group="gallery" href="#" class="btn-shape-circle btn active">{{prt.prtName}}</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="cell-xs-12 offset-top-40">
+          <!-- Isotope Content-->
+          <div data-isotope-layout="fitRows" data-isotope-group="gallery" data-photo-swipe-gallery="gallery" class="row isotope isotope-menu">
+            <div data-filter="Category 1" class="col-xs-12 col-sm-6 col-md-4 isotope-item" *ngFor="let pro of products">
+              <div class="thumbnail-menu-modern">
+                <figure><img src="assets/images/{{pro.proImage}}" alt="" width="310" height="260" class="img-responsive"/>
+                </figure>
+                <div class="caption">
+                  <h5><a [routerLink]="['/user/single', pro.proId]" class="link link-default">{{pro.proName}}</a></h5>
+                  <p class="text-italic">{{pro.proDetails}}</p>
+                  <p class="price">{{pro.proPrice}}</p><a href="shop-single.html" class="btn btn-shape-circle btn-burnt-sienna offset-top-15">Order Online</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offset-top-50 text-center divider-custom">
+        <div><a href="#" class="btn btn-md btn-shape-circle btn-primary-lighter">download full menu</a></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <!-- RD Parallax-->
+    <div data-on="false" data-md-on="true" class="rd-parallax rd-parallax-light">
+      <div data-speed="0.2" data-type="media" data-url="assets/images/parallax-02.jpg" class="rd-parallax-layer"></div>
+      <div data-speed="0.05" data-type="html" class="rd-parallax-layer">
+        <div class="shell section-80 section-sm-130">
+          <div class="range range-xs-center range-lg-bottom">
+            <div class="cell-md-9">
+              <div class="group-sm">
+                <h3 class="text-baseline">Fast Delivery</h3>
+                <div class="group-sm offset-top-15 offset-lg-top-0">
+                  <hr class="hr divider-xs bg-primary-lighter text-top veil reveal-lg-inline-block">
+                  <p class="big offset-lg-top-0 text-top">Enjoy our free, fast, and reliable delivery service.</p>
+                </div>
+              </div>
+            </div>
+            <div class="cell-lg-3"><a href="shop-single.html" class="btn btn-shape-circle btn-white-outline btn-min-width-md">order online</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

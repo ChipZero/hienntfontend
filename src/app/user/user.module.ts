@@ -13,6 +13,8 @@ import {CheffComponent} from './index/cheff/cheff.component';
 import {GgmapComponent} from './index/ggmap/ggmap.component';
 import {ProductComponent} from './index/product/product.component';
 import {ServiceesComponent} from './index/servicees/servicees.component';
+import { SingleComponent } from './single/single.component';
+import { AllproductComponent } from './allproduct/allproduct.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import {ServiceesComponent} from './index/servicees/servicees.component';
     CheffComponent,
     GgmapComponent,
     ProductComponent,
-    ServiceesComponent
+    ServiceesComponent,
+    SingleComponent,
+    AllproductComponent
   ],
   bootstrap: [UserComponent]
 })

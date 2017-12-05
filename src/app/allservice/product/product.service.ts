@@ -49,6 +49,11 @@ export class ProductService {
     const urlapi = `${this.url}/${id}`;
     return this.http.get(urlapi).toPromise().then(res => res.json());
   }
+  getByType(id: number) {
+    const urlapi = `${this.url}/bytype/${id}`;
+    return this.http.get(urlapi).toPromise()
+      .then(res => res.json());
+  }
   getByPrtId(id: number) {
     const urlapi = `${this.url}/getbyprotype/${id}`;
     return this.http.get(urlapi).toPromise().then(res => res.json());

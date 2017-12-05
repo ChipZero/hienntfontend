@@ -6,8 +6,7 @@ import {UserComponent} from './user/user.component';
 const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'user', component: UserComponent},
-  {path: '', redirectTo: 'user/index', pathMatch: 'full'},
-  {path: '**', redirectTo: 'user/index', pathMatch: 'full'}
+  {path: '', redirectTo: 'user/index', pathMatch: 'full'}
 ];
 
 @NgModule({
