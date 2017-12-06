@@ -21,11 +21,12 @@ export class ProductService {
     .then(res => res.json());
   }
 
-  create(product: Products) {
+  create(product) {
     const urlapi = `${this.url}/add`;
-    return this.http.post(urlapi, JSON.stringify(product), { headers: this.headers })
-    .toPromise()
-      .then(res => res.json())
+    const obj = JSON.stringify(product);
+    // console.log(obj);
+    return this.http.post(urlapi, obj, { headers: this.headers })
+    .toPromise().then(res => res.json())
     .catch(this.handleError);
   }
 

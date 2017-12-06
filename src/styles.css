@@ -34819,8 +34819,8 @@ html:not(.lt-ie10) .not-animated {
   transition: .33s all ease;
 }
 
-.rd-navbar-static .rd-navbar-submenu-toggle::after,
-.rd-navbar-fullwidth .rd-navbar-submenu-toggle::after {
+.rd-navbar-static ,
+.rd-navbar-fullwidth  {
   content: '\f078';
   position: relative;
   display: inline-block;

@@ -15,6 +15,13 @@ import {ProductComponent} from './index/product/product.component';
 import {ServiceesComponent} from './index/servicees/servicees.component';
 import { SingleComponent } from './single/single.component';
 import { AllproductComponent } from './allproduct/allproduct.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ClassicblogComponent } from './classicblog/classicblog.component';
+import { GridblogComponent } from './gridblog/gridblog.component';
+import { MasonryblogComponent } from './masonryblog/masonryblog.component';
+import { ModernblogComponent } from './modernblog/modernblog.component';
+import { PostblogComponent } from './postblog/postblog.component';
 
 @NgModule({
   imports: [
@@ -35,7 +42,14 @@ import { AllproductComponent } from './allproduct/allproduct.component';
     ProductComponent,
     ServiceesComponent,
     SingleComponent,
-    AllproductComponent
+    AllproductComponent,
+    AboutusComponent,
+    ContactsComponent,
+    ClassicblogComponent,
+    GridblogComponent,
+    MasonryblogComponent,
+    ModernblogComponent,
+    PostblogComponent
   ],
   bootstrap: [UserComponent]
 })

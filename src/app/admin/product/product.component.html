@@ -20,7 +20,7 @@
         <div class="alert alert-danger" *ngIf="productAddForm.get('proName')?.errors?.minlength || productAddForm.get('proName')?.errors?.maxlength">Phai co 2-100 ky tu!</div>
       </div>
 
-      <div class="form-group" formGroupName="Protype">
+      <div class="form-group" formGroupName="protype">
         <label>Protype Id</label>
         <select name="name" class="form-control" formControlName="prtId">
           <option *ngFor="let prt of protypes" [value]="prt.prtId">{{prt.prtName}}</option>
@@ -34,7 +34,8 @@
 
       <div class="form-group">
         <label>Images</label>
-        <input class="form-control" formControlName="proImage" type="file" name="proImage" #fileInput (change)="onFileChange($event)" id="proImage">
+        <input class="form-control" type="file" name="proImage" (change)="onFileChange($event)">
+        <img [src]="imageSrc" alt="" />
       </div>
 
       <div class="form-group">

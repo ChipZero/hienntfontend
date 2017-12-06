@@ -15,6 +15,7 @@ import {AdminModule} from './admin/admin.module';
 import {UserModule} from './user/user.module';
 import {MenuComponent} from './menu/menu.component';
 import {FooterComponent} from './footer/footer.component';
+import {NavigationEnd, Router} from '@angular/router';
 
 
 @NgModule({
@@ -38,4 +39,13 @@ import {FooterComponent} from './footer/footer.component';
   providers: [ProductService, ProtypeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private router: Router) {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
+  }
+}

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../allservice/product/product.service';
 import {ProtypeService} from '../../allservice/protype/protype.service';
-
 @Component({
   selector: 'app-allproduct',
   templateUrl: './allproduct.component.html',
@@ -19,6 +18,8 @@ export class AllproductComponent implements OnInit {
   ngOnInit() {
     this.getAllPro();
     this.getAllPrt();
+    this.loadScript('../../../assets/js/core.min.js');
+    this.loadScript('../../../assets/js/script.js');
   }
   getAllPro() {
     this.servicePro.getAll().then(pro => this.products = pro);
@@ -28,6 +29,13 @@ export class AllproductComponent implements OnInit {
   }
   getByType(prtId) {
     this.servicePro.getByType(prtId).then(pro => this.byType = pro);
+  }
+  public loadScript(url) {
+    console.log('preparing to load...');
+    const node = document.createElement('script');
+    node.src = url;
+    node.type = 'text/javascript';
+    document.getElementsByTagName('main')[0].appendChild(node);
   }
 
 }

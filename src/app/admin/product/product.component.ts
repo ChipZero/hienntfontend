@@ -3,6 +3,8 @@ import {ProductService} from '../../allservice/product/product.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProtypeService} from '../../allservice/protype/protype.service';
+import {$} from 'jquery';
+import { Protypes } from '../../model/protypes';
 
 @Component({
   selector: 'app-product',
@@ -17,8 +19,10 @@ export class ProductComponent implements OnInit {
   productAddForm: FormGroup;
   messages;
   protypes;
+  imageSrc;
+  fileName;
 
-  @ViewChild('fileInput') fileInput: ElementRef;
+  // @ViewChild('fileInput') fileInput: ElementRef;
   constructor(
     private service: ProductService,
     private prtservice: ProtypeService,
@@ -43,22 +47,28 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  onFileChange(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.productAddForm.get('proImage').setValue(file.name);
+  onFileChange(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      const reader = new FileReader();
+      this.fileName = fileInput.target.files[0].name;
+      console.log(this.fileName);
+      reader.onload = ((e) => {
+        this.imageSrc = e.target['result'];
+      });
+
+      reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
 
   createProductDataDefault() {
     this.productAddForm = this.fb.group({
-      Protype: this.fb.group({
+      protype: this.fb.group({
         prtId: ''
       }),
       proName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       proPrice: ['', [Validators.required, Validators.pattern('\\d{2,10}')]],
       proDetails: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      proImage: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      proImage: [''],
     });
   }
 
@@ -67,7 +77,11 @@ export class ProductComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.productAddForm.value);
+    // console.log(this.productAddForm.value);
+    this.productAddForm.patchValue({
+      proImage: this.fileName
+    });
+    // console.log(this.productAddForm.value);
     this.service.create(this.productAddForm.value).then(data => {
       console.log(data);
       this.checkCodeApi(data);
