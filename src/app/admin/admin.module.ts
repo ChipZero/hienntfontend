@@ -9,6 +9,7 @@ import {Ng2PaginationModule} from 'ng2-pagination';
 import {AdminComponent} from './admin.component';
 import {ProductModule} from './product/product.module';
 import {ProtypeModule} from './protype/protype.module';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {ProtypeModule} from './protype/protype.module';
     ReactiveFormsModule,
     Ng2PaginationModule,
     ProductModule,
-    ProtypeModule
+    ProtypeModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   declarations: [
     ProductComponent,

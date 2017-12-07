@@ -9,6 +9,18 @@
       <input class="form-control" type="text" formControlName="proId" name="proId" [attr.disabled]="true">
     </div>
 
+    <div class="form-group" formGroupName="protype" >
+      <label>Protype Id</label>
+      <select name="prtId" class="form-control" formControlName="prtId" id="prtId" >
+        <option *ngFor="let prt of protypes" [value]="prt.prtId">{{prt.prtName}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Images</label>
+      <input class="form-control" type="file" name="proImage" (change)="onFileChange($event)">
+      <img [src]="imageSrc" alt="" />
+    </div>
     <div class="form-group">
       <label>Product-Name</label>
       <input class="form-control" type="text" formControlName="proName"  name="proName">
@@ -23,7 +35,21 @@
       <div class="alert alert-danger" *ngIf="productData.get('proPrice')?.errors?.pattern">bạn cần nhập số độ dài 2-10 ký tự</div>
     </div>
 
+    <div class="form-group">
+      <label>Quick View</label>
+      <input class="form-control" formControlName="proQuickView" type="text" name="proQuickView">
+      <div class="alert alert-danger" *ngIf="productData.get('proQuickView')?.errors?.required && productData.get('proQuickView')?.touched">bạn chưa nhập Quick view!</div>
+      <div class="alert alert-danger" *ngIf="productData.get('proQuickView')?.errors?.minlength || productData.get('proQuickView')?.errors?.maxlength">Phai co 2-100 ky tu!</div>
+    </div>
+
+    <div class="form-group">
+      <label>Details</label>
+      <textarea class="form-control" formControlName="proDetails" name="proDetails" [froalaEditor]></textarea>
+    </div>
+
+
     <button type="submit" class="btn btn-success" [disabled]="productData.invalid">Update</button>
     <button type="button" class="btn btn-danger" (click)="back()" >Back</button>
   </form>
 </div>
+

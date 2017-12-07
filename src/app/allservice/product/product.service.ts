@@ -24,13 +24,13 @@ export class ProductService {
   create(product) {
     const urlapi = `${this.url}/add`;
     const obj = JSON.stringify(product);
-    // console.log(obj);
+    console.log(obj);
     return this.http.post(urlapi, obj, { headers: this.headers })
     .toPromise().then(res => res.json())
     .catch(this.handleError);
   }
 
-  update(product: Products) {
+  update(product) {
     const urlapi = `${this.url}/update`;
     return this.http.put(urlapi, JSON.stringify(product), { headers: this.headers })
       .toPromise()

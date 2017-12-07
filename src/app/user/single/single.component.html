@@ -143,20 +143,12 @@
         <li>Description</li>
         <li>Delivery</li>
       </ul>
-      <div class="resp-tabs-container">
-        <div>
-          <p class="text-base">Chicken beef cooked over charcoal and onions on the grill, hot pepper, lettuce, tomatoes,double American cheddar cheese sauce. Some things never go out of style, and our chargrilled Classic Burger is no exception. Served on a toasted Kaiser with lettuce, red onion, Roma tomato, mayo and pickle slices, and, as always, fresh hand-cut fries. Add bacon and/or cheese – they’re worth their weight in deliciousness.</p>
-          <div class="unit unit-horizontal unit-spacing-xs offset-top-20">
-            <div class="unit-left">
-              <p class="h6">Ingredients:</p>
-            </div>
-            <div class="unit-body">
-              <p>Turkey / Alfalfa / Lettuce / Chicken Beef / Tomatoes</p>
-            </div>
-          </div>
+      <div class="resp-tabs-container" *ngIf="productDetail">
+        <div [froalaView]="productDetail.proDetails">
+
         </div>
-        <div>
-          <p class="text-base">Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your order to your new treasures arriving at your doorstep. At first, you choose the product you like. Then you put into your shopping cart and pass the checkout process in a few clicks. Our store offers several payment and delivery methods, so after placing your order, you'll have an opportunity to choose which one is the most convenient for you.</p>
+        <div [froalaView]="productDetail.proQuickView">
+
         </div>
       </div>
     </div>

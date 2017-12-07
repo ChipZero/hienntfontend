@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Import Angular plugin.
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import {  HttpModule } from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,7 +36,8 @@ import {NavigationEnd, Router} from '@angular/router';
     AppRoutingModule,
     AdminModule,
     UserModule,
-    Ng2PaginationModule
+    Ng2PaginationModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [ProductService, ProtypeService],
   bootstrap: [AppComponent]

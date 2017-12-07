@@ -3,8 +3,6 @@ import {ProductService} from '../../allservice/product/product.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProtypeService} from '../../allservice/protype/protype.service';
-import {$} from 'jquery';
-import { Protypes } from '../../model/protypes';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +17,7 @@ export class ProductComponent implements OnInit {
   productAddForm: FormGroup;
   messages;
   protypes;
-  imageSrc;
+  imageSrc= '';
   fileName;
 
   // @ViewChild('fileInput') fileInput: ElementRef;
@@ -67,8 +65,9 @@ export class ProductComponent implements OnInit {
       }),
       proName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       proPrice: ['', [Validators.required, Validators.pattern('\\d{2,10}')]],
-      proDetails: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      proDetails: [''],
       proImage: [''],
+      proQuickView: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]]
     });
   }
 
@@ -81,7 +80,7 @@ export class ProductComponent implements OnInit {
     this.productAddForm.patchValue({
       proImage: this.fileName
     });
-    // console.log(this.productAddForm.value);
+    console.log(this.productAddForm.value);
     this.service.create(this.productAddForm.value).then(data => {
       console.log(data);
       this.checkCodeApi(data);

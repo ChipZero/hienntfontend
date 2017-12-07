@@ -22,6 +22,7 @@ import { GridblogComponent } from './gridblog/gridblog.component';
 import { MasonryblogComponent } from './masonryblog/masonryblog.component';
 import { ModernblogComponent } from './modernblog/modernblog.component';
 import { PostblogComponent } from './postblog/postblog.component';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { PostblogComponent } from './postblog/postblog.component';
     FormsModule,
     ReactiveFormsModule,
     Ng2PaginationModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   declarations: [
     IndexComponent,
